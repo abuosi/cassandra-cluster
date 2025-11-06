@@ -1,0 +1,35 @@
+# Cassandra data directories
+cassandra-data/node1/*
+cassandra-data/node2/*
+cassandra-data/node2/*
+
+# Keep data directory structure but ignore contents
+!cassandra-data/node1/.gitkeep
+!cassandra-data/node2/.gitkeep
+!cassandra-data/node3/.gitkeep
+
+# Docker related
+.env
+.env.local
+.env.*.local
+
+# IDE and Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+logs/
+*.log
+*.log*
+
+# Backup files
+*.bak
+*.backup
+*.old
+
+# Temporary files
+tmp/
+temp/

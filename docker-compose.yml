@@ -1,0 +1,51 @@
+version: '3.8'
+services:
+  cassandra-node1:
+    image: cassandra:5
+    container_name: cassandra-node1
+    hostname: cassandra-node1
+    networks:
+      - cassandra-network
+    environment:
+      - CASSANDRA_CLUSTER_NAME=cassandra-cluster
+      - CASSANDRA_SEEDS=cassandra-node1
+    ports:
+      - "9042:9042"
+    volumes:
+      - ./cassandra-data/node1:/var/lib/cassandra
+
+  cassandra-node2:
+    image: cassandra:5
+    container_name: cassandra-node2
+    hostname: cassandra-node2
+    networks:
+      - cassandra-network
+    environment:
+      - CASSANDRA_CLUSTER_NAME=cassandra-cluster
+      - CASSANDRA_SEEDS=cassandra-node1
+      - CASSANDRA_LISTEN_ADDRESS=cassandra-node2
+      - CASSANDRA_RPC_ADDRESS=cassandra-node2
+    volumes:
+      - ./cassandra-data/node2:/var/lib/cassandra
+    depends_on:
+      - cassandra-node1
+
+  # cassandra-node3:
+  #   image: cassandra:5
+  #   container_name: cassandra-node3
+  #   hostname: cassandra-node3
+  #   networks:
+  #     - cassandra-network
+  #   environment:
+  #     - CASSANDRA_CLUSTER_NAME=cassandra-cluster
+  #     - CASSANDRA_SEEDS=cassandra-node1
+  #     - CASSANDRA_LISTEN_ADDRESS=cassandra-node3
+  #     - CASSANDRA_RPC_ADDRESS=cassandra-node3
+  #   volumes:
+  #     - ./cassandra-data/node3:/var/lib/cassandra
+  #   depends_on:
+  #     - cassandra-node1
+
+networks: 
+  cassandra-network:
+    driver: bridge   
